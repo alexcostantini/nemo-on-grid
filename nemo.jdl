@@ -1,0 +1,23 @@
+JobType = "Normal";
+CPUNumber = 4;
+SMPGranularity = 4;
+#HostNumber = 2;
+#WholeNodes = true;
+Executable = "nemo.sh";
+#input_param;output_name;exec_tar;input_data(lfn);MPI
+#user       ;user       ;user    ;user           ;user
+Arguments = "nemo34_bash nemo_output_1_unipg bin_nemo_gF44.tgz NEMO_DATA.tgz OPENMPI";
+StdOutput = "mpi-nemo.out";
+StdError = "mpi-nemo.err";
+InputSandbox = {"nemo.sh","EXP_nemo.tgz","bin_nemo_gF44.tgz","nemo34_bash"};
+OutputSandbox = {"mpi-nemo.err","mpi-nemo.out"};
+Requirements =
+Member("MPI-START", other.GlueHostApplicationSoftwareRunTimeEnvironment) &&
+Member("OPENMPI", other.GlueHostApplicationSoftwareRunTimeEnvironment)
+#Member("MPI_NO_SHARED_HOME", other.GlueHostApplicationSoftwareRunTimeEnvironment)
+&&
+#other.GlueCEUniqueID == "ce.scope.unina.it:8443/cream-pbs-egee_long"
+other.GlueCEUniqueID == "ng-ce.grid.unipg.it:8443/cream-pbs-grid"
+#other.GlueCEUniqueID == "ce-02.roma3.infn.it:8443/cream-pbs-fastgrid"
+#other.GlueCEUniqueID == "ce-02.roma3.infn.it:8443/cream-pbs-grid"
+;

@@ -1,4 +1,4 @@
 nemo-on-grid
 ============
 
-NEMO porting process
+HOW TO for installation and running of NEMO package
